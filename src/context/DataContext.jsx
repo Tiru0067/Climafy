@@ -47,7 +47,6 @@ export const DataProvider = ({ children }) => {
       try {
         const response = await fetch("https://ipwho.is/");
         const data = await response.json();
-        console.log(data);
         updateCoords(
           data.latitude,
           data.longitude,
@@ -68,9 +67,11 @@ export const DataProvider = ({ children }) => {
 
         try {
           const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`;
+          console.log(url);
           const response = await fetch(url);
           const data = await response.json();
-          const { lat, lon, city, country, country_code } = data.address;
+          const { lat, lon, country, country_code } = data.address;
+          const city = data.address.city ?? data.address.state_district;
           updateCoords(lat, lon, city, country, country_code);
         } catch (err) {
           console.log(err.message);
