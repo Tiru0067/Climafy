@@ -115,8 +115,8 @@ const Header = () => {
           <FaLocationArrow className="location-icon" />
           {!loading.location && (
             <p className="location-text">
-              {coords?.city.toUpperCase() || "UNKNOWN"}
-              <span> / {coords?.countryCode.toUpperCase() || "UNKNOWN"}</span>
+              {coords?.city?.toUpperCase() || "UNKNOWN"}
+              <span> / {coords?.countryCode?.toUpperCase() || "UNKNOWN"}</span>
             </p>
           )}
         </div>
