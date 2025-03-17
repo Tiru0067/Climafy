@@ -1,0 +1,141 @@
+.header {
+  width: 100%;
+  padding: 20px 50px;
+}
+
+.header,
+.header-left,
+.header-right,
+.search-container,
+.location {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-right {
+  justify-content: flex-end;
+}
+
+.logo {
+  font-size: 1.2rem;
+  color: var(--primary-text);
+}
+
+.location-icon {
+  font-size: 1.1em;
+  color: var(--primary-accent);
+}
+
+.location-text {
+  font-size: 1rem;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--secondary-text);
+}
+
+.search-button {
+  border: none;
+  padding: 0.5em;
+  background-color: transparent;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  color: var(--primary-accent);
+}
+
+.header-right {
+  width: 100%;
+}
+
+.search-form {
+  min-width: 200px;
+  max-width: 400px;
+  flex-grow: 1;
+  position: relative;
+}
+
+.search-input {
+  outline: none;
+  background-color: var(--searchbar-background);
+  border: 2px solid var(--searchbar-border);
+  color: var(--searchbar-text);
+  border-radius: 6px;
+  width: 100%;
+  max-width: 100%;
+  padding: 6px 16px;
+  font-size: 0.9em;
+}
+
+.search-suggestions {
+  width: 100%;
+  background-color: var(--searchbar-background);
+  border: 2px solid var(--searchbar-border);
+  border-top: none;
+  top: 24px;
+  position: absolute;
+  list-style: none;
+  padding-left: 0;
+  padding-top: 10px;
+  max-height: 500px;
+  overflow-y: auto;
+  border-radius: 0 0 6px 6px;
+}
+
+.suggestion-item {
+  width: 100%;
+  padding: 0;
+}
+
+.suggestion-item button {
+  width: 100%;
+  background-color: transparent;
+  padding: 5px 16px;
+  text-align: left;
+  font-size: 0.9em;
+  border-radius: 0;
+  color: var(--searchbar-text);
+}
+
+.suggestion-item:last-child button {
+  border-radius: 0 0 4px 4px;
+}
+
+.suggestion-item.active button,
+.suggestion-item button:hover,
+.suggestion-item button:focus-visible {
+  background-color: var(--secondary-accent);
+  color: var(--searchbar-selected-text);
+}
+
+@media (max-width: 768px) {
+  .header {
+    position: relative;
+    padding: 10px 20px;
+  }
+
+  .header-left,
+  .location {
+    gap: 7px;
+  }
+
+  .search-form {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+  }
+
+  .settings-menu-label {
+    display: none;
+  }
+
+  .location-text {
+    font-size: 0.85em;
+  }
+}

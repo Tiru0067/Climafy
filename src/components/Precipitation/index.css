@@ -1,0 +1,80 @@
+.precipitation-wrapper {
+  padding: 20px;
+  padding-bottom: 0px;
+  border: 2px solid var(--border);
+}
+
+.precipitation-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.precipitation-title {
+  font-size: 1.3em;
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: var(--secondary-accent);
+}
+
+.precipitation-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  padding: 22px 0;
+  border-bottom: 2px solid var(--line);
+}
+
+.precipitation-item:first-child {
+  padding-top: 10px;
+}
+
+.precipitation-item:last-child {
+  border-bottom: none;
+}
+
+.precipitation-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  line-height: normal;
+}
+
+.precipitation-label {
+  font-size: 0.85em;
+  font-weight: 500;
+  color: var(--secondary-text);
+  margin-bottom: 5px;
+}
+
+.precipitation-type {
+  font-size: 1em;
+  font-weight: 500;
+  color: var(--primary-text);
+}
+
+.precipitation-label-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.precipitation-icon {
+  width: 25px;
+}
+
+.precipitation-value {
+  font-size: 1.05em;
+  font-weight: 500;
+  color: var(--muted-text);
+}
+
+.units {
+  font-size: 0.8em;
+}
+
+.precipitation-value.active {
+  color: var(--progress-fill);
+}

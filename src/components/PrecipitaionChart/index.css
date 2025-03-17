@@ -1,0 +1,31 @@
+.precipitation-chart-wrapper {
+  padding: 10px;
+  padding-right: 0;
+  border: 2px solid var(--border);
+  width: 100%;
+}
+
+.precipitation-chart-title {
+  font-size: 1.3em;
+  font-weight: 500;
+  color: var(--secondary-accent);
+}
+
+.precipitation-chart-info {
+  font-size: 0.95em;
+  font-weight: 500;
+  color: var(--primary-text);
+  display: flex;
+  align-items: flex-start;
+}
+
+.precipitation-chart-info span {
+  font-size: 0.75em;
+  margin-top: 2px;
+  margin-right: 2px;
+  font-weight: 600;
+}
+
+.precipitation-chart-info span:last-child {
+  margin-left: 5px;
+}

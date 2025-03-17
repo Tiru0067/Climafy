@@ -1,0 +1,28 @@
+.toggle-button {
+  width: 45px;
+  height: 22px;
+  border-radius: 24px;
+  padding: 0px;
+  border: 1px solid grey;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.toggle-circle {
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(2px);
+}
+
+.toggle-button.toggle-button.active {
+  background-color: var(--primary-accent);
+}
+
+.toggle-button.active .toggle-circle {
+  transform: translateX(25.5px);
+}

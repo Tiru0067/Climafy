@@ -1,0 +1,45 @@
+.hourly-container {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(50px, 1fr);
+  gap: 15px;
+  flex: 1;
+  padding: 0 10px;
+  min-width: 335px;
+  max-width: 100%;
+  background-color: var(--card-background);
+  box-shadow: var(--card-shadow);
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+}
+
+.hourly-card {
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 7px;
+  scroll-snap-align: center;
+}
+
+.hourly-card span {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-content: center;
+}
+
+.hourly-weather-icon {
+  width: 25px;
+  height: auto;
+}
+
+.hourly-temp {
+  color: var(--primary-text);
+}
+
+.hourly-time {
+  color: var(--secondary-text);
+}

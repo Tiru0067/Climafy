@@ -1,0 +1,91 @@
+.weather-container,
+.weather-main {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 40px;
+}
+
+.weather-container {
+  padding: 0 10px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 767px) {
+  .weather-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.weather-icon-container,
+.sunrise-sunset,
+.weather-info-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.weather-icon {
+  width: 75px;
+  margin-bottom: 15px;
+}
+
+.sunrise-sunset {
+  font-size: 0.8em;
+  font-weight: 500;
+  color: var(--secondary-text);
+  white-space: nowrap;
+}
+
+.weather-message {
+  font-size: 0.8em;
+  color: var(--secondary-text);
+  font-weight: 500;
+}
+
+.formatted-time,
+.feels-like {
+  font-size: 1.19em;
+  font-weight: 600;
+  color: var(--primary-text);
+}
+
+.feels-like {
+  font-size: 1em;
+  font-weight: 500;
+}
+
+.temperature {
+  font-size: 4.2em;
+  font-weight: 700;
+  color: var(--primary-accent);
+  margin: -10px 0;
+}
+
+.more-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.more-details h3 {
+  font-size: 1em;
+  color: var(--primary-text);
+  margin-bottom: 10px;
+}
+
+.more-details p {
+  font-size: 0.8em;
+  font-weight: 500;
+  color: var(--secondary-text);
+}
+
+.more-details p strong {
+  color: var(--primary-text);
+}
+
+@media (min-width: 768px) {
+  .more-details {
+    margin-left: 40px;
+  }
+}

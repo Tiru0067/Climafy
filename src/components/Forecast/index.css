@@ -1,0 +1,77 @@
+.forecast-wrapper {
+  padding: 20px;
+  padding-bottom: 0px;
+  border: 2px solid var(--border);
+}
+
+.forecast-title {
+  font-size: 1.3em;
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: var(--secondary-accent);
+}
+
+.forecast-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 2px solid var(--line);
+}
+
+.forecast-item:last-child {
+  border-bottom: none;
+}
+
+.forecast-day {
+  min-width: 85px;
+  font-size: 1em;
+  font-weight: 500;
+  color: var(--primary-text);
+}
+
+.forecast-temp-container {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.forecast-temp {
+  width: 25px;
+  text-align: right;
+  color: var(--muted-text);
+  font-weight: 500;
+}
+
+.forecast-temp:last-child {
+  text-align: left;
+}
+
+.forecast-icon {
+  display: flex;
+  align-items: center;
+}
+
+.forecast-icon img {
+  width: 25px;
+  height: auto;
+}
+
+.forecast-bar {
+  flex: 1;
+  height: 6px;
+  background-color: var(--progress-background);
+  max-width: 100%;
+}
+
+.forecast-fill {
+  margin-left: auto;
+  max-width: 100%;
+  height: 100%;
+  background-color: var(--progress-fill);
+}

@@ -1,0 +1,33 @@
+.dashboard {
+  min-height: 100vh;
+  width: 100vw;
+  max-width: 1440px;
+  overflow: hidden;
+}
+
+.dashboard-content {
+  padding: 60px min(5%, 50px);
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 100%;
+}
+
+.forecast-section,
+.chart-section {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.forecast-section > * {
+  flex: 1;
+  min-width: 300px;
+}
+
+.chart-section > * {
+  flex: 1;
+  min-width: 350px;
+}

@@ -1,0 +1,122 @@
+.settings-menu {
+  position: relative;
+}
+
+.settings-menu-toggle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+
+.settins-menu button {
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  background-color: slateblue;
+  color: white;
+  cursor: pointer;
+}
+
+.settings-menu-label {
+  font-size: 1em;
+  color: var(--primary-accent);
+  font-weight: 500;
+  line-height: normal;
+}
+
+.settings-menu-button {
+  border: none;
+  padding: 0.5em;
+  background-color: transparent;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  color: var(--primary-accent);
+}
+
+.menu-wrapper {
+  position: relative;
+}
+
+.settings-menu-list {
+  position: absolute;
+  top: 60%;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+  margin-top: 25px;
+  min-width: 275px;
+  padding: 10px 5px;
+  border-radius: 6px;
+  background-color: var(--menu-background);
+  border: 2px solid var(--border);
+  box-shadow: var(--card-shadow);
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.5);
+  transform-origin: top right;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+.settings-menu-list.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.settings-menu-list::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 12px solid var(--border);
+}
+
+.settings-menu-list::after {
+  content: "";
+  position: absolute;
+  top: -9.5px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 12px solid var(--menu-background); /* Menu arrow background color */
+}
+
+.settings-menu-item {
+  width: 100%;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  color: var(--primary-text);
+  font-size: 1em;
+  font-size: 500;
+}
+
+.menu-item-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+}
+
+.menu-item-label {
+  color: var(--primary-text);
+}
+
+.default-label {
+  font-size: 0.65em;
+  color: var(--secondary-text);
+}
