@@ -45,6 +45,7 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     const getCurrentLocation = async () => {
       try {
+        // Try to get location using IP (as a backup if GPS fails)
         const response = await fetch("https://ipwho.is/");
         const data = await response.json();
         updateCoords(
@@ -55,7 +56,7 @@ export const DataProvider = ({ children }) => {
           data.country_code
         );
       } catch (error) {
-        console.error("Error fetching location:", error);
+        console.error("Couldn't fetch location from IP:", error);
       } finally {
         setLoading((prev) => ({ ...prev, location: false }));
       }
@@ -66,23 +67,27 @@ export const DataProvider = ({ children }) => {
         const { latitude, longitude } = pos.coords;
 
         try {
+          // Get location details from GPS coordinates
           const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`;
-          console.log(url);
           const response = await fetch(url);
           const data = await response.json();
-          const { lat, lon, country, country_code } = data.address;
+          const { lat, lon } = data;
+          const { country, country_code } = data.address;
+          // Use city if available, otherwise use state-district as fallback
           const city = data.address.city ?? data.address.state_district;
           updateCoords(lat, lon, city, country, country_code);
         } catch (err) {
-          console.log(err.message);
+          console.log("Error getting location details:", err.message);
         } finally {
           setLoading((prev) => ({ ...prev, location: false }));
         }
       },
       (err) => {
         if (err.code === 1) {
-          console.log("User denied location access");
-          getCurrentLocation();
+          console.log(
+            "User denied location access. Using IP-based location instead."
+          );
+          getCurrentLocation(); // Use IP if GPS is blocked
         }
       }
     );
