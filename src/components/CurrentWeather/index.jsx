@@ -134,7 +134,7 @@ const CurrentWeather = () => {
           </strong>
         </p>
         <p>
-          Precipitation probability: <strong>{precipitationChance}</strong>
+          Precipitation probability: <strong>{precipitationChance}%</strong>
         </p>
       </div>
       <HourlyWeather />

@@ -137,5 +137,15 @@
 
   .location-text {
     font-size: 0.85em;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .city-label {
+    display: inline-block;
+    width: 75px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
