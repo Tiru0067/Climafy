@@ -45,14 +45,15 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     const getCurrentLocation = async () => {
       try {
-        const response = await fetch("https://ip-api.com/json");
+        const response = await fetch("https://ipwho.is/");
         const data = await response.json();
+        console.log(data);
         updateCoords(
-          data.lat,
-          data.lon,
+          data.latitude,
+          data.longitude,
           data.city,
           data.country,
-          data.countryCode
+          data.country_code
         );
       } catch (error) {
         console.error("Error fetching location:", error);
