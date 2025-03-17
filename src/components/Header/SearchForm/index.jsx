@@ -9,7 +9,6 @@ const SearchForm = ({
   handleKeyDown,
   selectedLocation,
 }) => {
-  console.log(suggestions);
   return (
     <form className="search-form" onSubmit={handleSearchSubmit}>
       <input
