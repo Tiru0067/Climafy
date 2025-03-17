@@ -16,22 +16,22 @@ import DataContext from "../../context/DataContext";
 const TemperatureChart = () => {
   const { hourlyWeather } = useContext(DataContext);
 
-  const hourlyData = hourlyWeather[0].hourly;
+  const hourlyData = hourlyWeather?.[0]?.hourly;
 
   // Filter hourly data for today and create 3-hour intervals
-  const todayWeather = hourlyData.time
+  const todayWeather = hourlyData?.time
     .map((time, index) => ({
       time,
       hour: format(parseISO(time), "H"),
-      temperature: Math.round(hourlyData.temperature_2m[index]),
+      temperature: Math.round(hourlyData?.temperature_2m?.[index]),
     }))
     .filter((hour, index) => {
-      const hourDate = parseISO(hour.time);
+      const hourDate = parseISO(hour?.time);
       return isToday(hourDate) && index % 3 === 0; // Filters for 3-hour intervals
     });
 
-  const maxTemp = Math.max(...todayWeather.map((d) => d.temperature));
-  const minTemp = Math.min(...todayWeather.map((d) => d.temperature));
+  const maxTemp = Math.max(...todayWeather?.map((d) => d?.temperature));
+  const minTemp = Math.min(...todayWeather?.map((d) => d?.temperature));
 
   // Adjust Y-axis to start from minTemp if negative, else from 0
   const yMin = minTemp < 0 ? Math.floor(minTemp / 10) * 10 : 0;

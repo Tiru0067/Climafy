@@ -12,13 +12,13 @@ const Forecast = () => {
     temperature_2m_min: temperatureMin,
     time: time,
     weathercode: code,
-  } = weeklyForecast[0].daily;
+  } = weeklyForecast?.[0]?.daily || {};
 
   return (
     <div className="forecast-wrapper">
       <h2 className="forecast-title">Forecast</h2>
       <div className="forecast-container">
-        {time.slice(1).map((date, index) => {
+        {time?.slice(1).map((date, index) => {
           const dayName =
             index === 0
               ? "Tomorrow"
@@ -32,8 +32,8 @@ const Forecast = () => {
 
           // Choose the correct weather icon based on day or night
           const weatherIcon = isNight
-            ? weatherIcons[code[index]]?.nightIcon
-            : weatherIcons[code[index]]?.icon;
+            ? weatherIcons?.[code?.[index]]?.nightIcon
+            : weatherIcons?.[code?.[index]]?.icon;
 
           return (
             <div key={date} className="forecast-item">
@@ -54,10 +54,10 @@ const Forecast = () => {
                     className="forecast-fill"
                     style={{
                       width: `${
-                        (temperatureMax[index] /
+                        (temperatureMax?.[index] /
                           Math.abs(
-                            Math.abs(temperatureMin[index]) +
-                              temperatureMax[index]
+                            Math.abs(temperatureMin?.[index]) +
+                              temperatureMax?.[index]
                           )) *
                         100
                       }%`,
@@ -65,7 +65,7 @@ const Forecast = () => {
                   ></div>
                 </div>
                 <span className="forecast-temp">{`${Math.round(
-                  temperatureMax[index]
+                  temperatureMax?.[index]
                 )}°`}</span>
               </div>
             </div>

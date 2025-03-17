@@ -6,16 +6,18 @@ const ComparisonByDay = () => {
   const { weeklyForecast, yesterdayWeather } = useContext(DataContext);
 
   // Extraction yesterday's max and min temperatures
-  const yesterdayMax = yesterdayWeather[0]?.daily.temperature_2m_max[0];
-  const yesterdayMin = yesterdayWeather[0]?.daily.temperature_2m_min[0];
+  const yesterdayMax =
+    yesterdayWeather?.[0]?.daily.temperature_2m_max?.[0] || 0;
+  const yesterdayMin =
+    yesterdayWeather?.[0]?.daily.temperature_2m_min?.[0] || 0;
 
   // Extraction today's max and min temperatures
-  const todayMax = weeklyForecast[0].daily.temperature_2m_max[0];
-  const todayMin = weeklyForecast[0].daily.temperature_2m_min[0];
+  const todayMax = weeklyForecast?.[0]?.daily.temperature_2m_max?.[0];
+  const todayMin = weeklyForecast?.[0]?.daily.temperature_2m_min?.[0];
 
   // Extraction tomrrow's max and min temperatures
-  const tomorrowMax = weeklyForecast[0].daily.temperature_2m_max[1];
-  const tomorrowMin = weeklyForecast[0].daily.temperature_2m_min[1];
+  const tomorrowMax = weeklyForecast?.[0]?.daily.temperature_2m_max?.[1];
+  const tomorrowMin = weeklyForecast?.[0]?.daily.temperature_2m_min?.[1];
 
   //Defining an array to store temperature data for rendering
   const temperatureData = [

@@ -13,12 +13,11 @@ import "./index.css";
 
 const WeatherDashboard = () => {
   const { loading } = useContext(DataContext);
-  const { theme, toggleTheme } = useContext(ThemeProvider);
 
   return (
     <main className="dashboard">
       <Header />
-      {!loading.weather && (
+      {!loading?.weather && (
         <div className="dashboard-content">
           <CurrentWeather />
           <div className="forecast-section">

@@ -16,22 +16,22 @@ import DataContext from "../../context/DataContext";
 const PrecipitationChart = () => {
   const { hourlyWeather } = useContext(DataContext);
 
-  const hourlyData = hourlyWeather[0].hourly;
+  const hourlyData = hourlyWeather?.[0]?.hourly;
 
   // Filter hourly data for today and create 3-hour intervals
-  const todayWeather = hourlyData.time
+  const todayWeather = hourlyData?.time
     .map((time, index) => ({
       time,
       hour: format(parseISO(time), "H"),
-      precipitation: hourlyData.precipitation_probability[index],
+      precipitation: hourlyData?.precipitation_probability?.[index],
     }))
     .filter((hour, index) => {
-      const hourDate = parseISO(hour.time);
+      const hourDate = parseISO(hour?.time);
       return isToday(hourDate) && index % 3 === 0; // Filters for 3-hour intervals
     });
 
-  const maxPrecip = Math.max(...todayWeather.map((d) => d.precipitation));
-  const minPrecip = Math.min(...todayWeather.map((d) => d.precipitation));
+  const maxPrecip = Math.max(...todayWeather?.map((d) => d?.precipitation));
+  const minPrecip = Math.min(...todayWeather?.map((d) => d?.precipitation));
   const yMax = Math.ceil(maxPrecip / 10) * 10;
 
   return (

@@ -22,19 +22,25 @@ const CurrentWeather = () => {
     rain,
     showers,
     snowfall,
-  } = weatherNow[0].current;
+  } = weatherNow?.[0]?.current || {};
 
   const {
     temperature_2m: temperatureUnit,
     relative_humidity_2m: humidityUnit,
     wind_speed_10m: windSpeedUnit,
     pressure_msl: pressureUnit,
-  } = weatherNow[0].current_units;
+  } = weatherNow?.[0]?.current_units || {};
 
   const temperatureSign = temperature > 0 ? "+" : "";
 
-  const sunrise = format(parseISO(weeklyForecast[0].daily.sunrise[0]), "H:mm");
-  const sunset = format(parseISO(weeklyForecast[0].daily.sunset[0]), "H:mm");
+  const sunrise = format(
+    parseISO(weeklyForecast?.[0]?.daily?.sunrise?.[0]),
+    "H:mm"
+  );
+  const sunset = format(
+    parseISO(weeklyForecast?.[0]?.daily?.sunset?.[0]),
+    "H:mm"
+  );
 
   useEffect(() => {
     const updateFormattedTime = () => {
@@ -57,7 +63,7 @@ const CurrentWeather = () => {
   }, [timezone]);
 
   const precipitationChance =
-    weeklyForecast[0].daily.precipitation_probability_max[0] + "%";
+    weeklyForecast?.[0]?.daily?.precipitation_probability_max?.[0] || 0;
 
   const isNight = new Date().getHours() >= 18 || new Date().getHours() < 6;
   const weatherIcon = isNight
@@ -72,8 +78,8 @@ const CurrentWeather = () => {
   if (snowfall > 0)
     weatherMessage =
       "Snowfall is expected. Stay warm and be cautious on the roads.";
-  if (precipitationChance > 0)
-    weatherMessage += ` Precipitation levels at ${precipitationChance}.`;
+  if (Number(precipitationChance) > 0)
+    weatherMessage += ` Precipitation levels at ${precipitationChance}%.`;
 
   return (
     <div className="weather-container">

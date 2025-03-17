@@ -8,16 +8,16 @@ const Precipitation = () => {
 
   //checking data has length or not
   const dataLength =
-    !weeklyForecast || !weeklyForecast[0]?.daily?.precipitation_sum?.length;
+    !weeklyForecast || !weeklyForecast?.[0]?.daily?.precipitation_sum?.length;
 
-  const precipitationData = weeklyForecast[0].daily.precipitation_sum;
-  const weatherCodeData = weeklyForecast[0].daily.weathercode;
-  const units = weeklyForecast[0].daily_units.precipitation_sum;
+  const precipitationData = weeklyForecast?.[0]?.daily?.precipitation_sum;
+  const weatherCodeData = weeklyForecast?.[0]?.daily?.weathercode;
+  const units = weeklyForecast?.[0]?.daily_units?.precipitation_sum;
 
   const getWeatherInfo = (index) => {
     const weatherCode = weatherCodeData?.[index] || 0;
     const precipitation = precipitationData?.[index] || 0;
-    const weatherInfo = weatherIcons[weatherCode] || { name: "Unknown" };
+    const weatherInfo = weatherIcons?.[weatherCode] || { name: "Unknown" };
 
     let precipitationType = "";
     if ([51, 53, 55, 61, 63, 65, 80, 81, 82].includes(weatherCode)) {
@@ -55,29 +55,29 @@ const Precipitation = () => {
             <div key={index} className="precipitation-item">
               <div className="precipitation-label-container">
                 <span className="precipitation-label">
-                  {label.toUpperCase()}
+                  {label?.toUpperCase()}
                 </span>
 
                 <div className="precipitation-info">
-                  {weather.icon && (
+                  {weather?.icon && (
                     <img
-                      src={weather.icon}
-                      alt={weather.name}
+                      src={weather?.icon}
+                      alt={weather?.name}
                       className="precipitation-icon"
                     />
                   )}
                   <span className="precipitation-type">
-                    {weather.precipitationType || "Precipitation"}
+                    {weather?.precipitationType || "Precipitation"}
                   </span>
                 </div>
               </div>
               <span
                 className={`precipitation-value ${
-                  weather.precipitation > 0 ? "active" : ""
+                  weather?.precipitation > 0 ? "active" : ""
                 }`}
               >
-                {weather.precipitation}{" "}
-                <span className="units">{units.toUpperCase()}</span>
+                {weather?.precipitation}{" "}
+                <span className="units">{units?.toUpperCase()}</span>
               </span>
             </div>
           ))}
