@@ -25,10 +25,10 @@ export const DataProvider = ({ children }) => {
     windspeedUnit: "kmh",
     precipitationUnit: "mm",
   });
-
   const [fahrenheit, setFahrenheit] = useState(false);
   const [mph, setMph] = useState(false);
   const [inches, setInches] = useState(false);
+  const [is12Hour, setIs12Hour] = useState(false);
 
   const updateCoords = (lat, lon, city, country, countryCode) => {
     setCoords({ lat, lon, city, country, countryCode });
@@ -162,6 +162,8 @@ export const DataProvider = ({ children }) => {
         setInches,
         mph,
         setMph,
+        is12Hour,
+        setIs12Hour,
       }}
     >
       {children}

@@ -7,7 +7,7 @@ import DataContext from "../../../context/DataContext";
 import weatherIcons from "../../../assets/weatherIcons";
 
 const HourlyWeather = () => {
-  const { hourlyWeather } = useContext(DataContext);
+  const { hourlyWeather, is12Hour } = useContext(DataContext);
 
   const hourlyData = hourlyWeather?.[0]?.hourly;
   if (!hourlyData || !hourlyData.time) return null; // Prevent errors if data is not available
@@ -34,6 +34,8 @@ const HourlyWeather = () => {
           ? weatherIcons?.[item?.weatherCode]?.nightIcon
           : weatherIcons?.[item?.weatherCode]?.icon;
 
+        const timeFormat = is12Hour ? "h:mm a" : "H:mm";
+
         return (
           <div key={index} className="hourly-card">
             <span>
@@ -44,8 +46,8 @@ const HourlyWeather = () => {
               />
             </span>
             <p className="hourly-temp">{item?.temperature}°</p>
-            <p className="hourly-time">
-              {format(parseISO(item?.time), "H:mm")}
+            <p className={is12Hour ? "hourly-time-12" : "hourly-time"}>
+              {format(parseISO(item?.time), timeFormat)}
             </p>
           </div>
         );

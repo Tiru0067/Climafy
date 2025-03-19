@@ -9,7 +9,8 @@ import "./index.css";
 
 const CurrentWeather = () => {
   const [formattedTime, setFormattedTime] = useState(null);
-  const { timezone, weatherNow, weeklyForecast } = useContext(DataContext);
+  const { timezone, weatherNow, weeklyForecast, is12Hour } =
+    useContext(DataContext);
 
   const {
     temperature_2m: temperature,
@@ -33,19 +34,22 @@ const CurrentWeather = () => {
 
   const temperatureSign = temperature > 0 ? "+" : "";
 
+  const timeFormat = is12Hour ? "h:mm a" : "H:mm";
+
   const sunrise = format(
     parseISO(weeklyForecast?.[0]?.daily?.sunrise?.[0]),
-    "H:mm"
+    timeFormat
   );
   const sunset = format(
     parseISO(weeklyForecast?.[0]?.daily?.sunset?.[0]),
-    "H:mm"
+    timeFormat
   );
 
   useEffect(() => {
     const updateFormattedTime = () => {
       const localTime = DateTime.utc().setZone(timezone); // Convert to selected timezone
-      setFormattedTime(localTime.toFormat("EEE, dd MMM H:mm"));
+      const format = is12Hour ? "EEE, dd MMM h:mm a" : "EEE, dd MMM H:mm";
+      setFormattedTime(localTime.toFormat(format));
     };
 
     updateFormattedTime();
@@ -60,7 +64,7 @@ const CurrentWeather = () => {
     }, delay);
 
     return () => clearTimeout(timeout);
-  }, [timezone]);
+  }, [timezone, is12Hour]);
 
   const precipitationChance =
     weeklyForecast?.[0]?.daily?.precipitation_probability_max?.[0] || 0;

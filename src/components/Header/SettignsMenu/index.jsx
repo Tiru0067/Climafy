@@ -11,8 +11,16 @@ const SettingsMenu = () => {
   const menuRef = useRef(null);
 
   const { darkMode, setDarkMode } = useContext(ThemeContext);
-  const { fahrenheit, setFahrenheit, inches, setInches, mph, setMph } =
-    useContext(DataContext);
+  const {
+    fahrenheit,
+    setFahrenheit,
+    inches,
+    setInches,
+    mph,
+    setMph,
+    is12Hour,
+    setIs12Hour,
+  } = useContext(DataContext);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -70,7 +78,7 @@ const SettingsMenu = () => {
             <span className="menu-item-label">Use 12-Hour Format</span>
             <span className="default-label">Default: 24-Hour Format</span>
           </div>
-          <ToggleButton isToggle={inches} setIsToggle={setInches} />
+          <ToggleButton isToggle={is12Hour} setIsToggle={setIs12Hour} />
         </li>
         <li className="settings-menu-item">
           Enable Dark mode

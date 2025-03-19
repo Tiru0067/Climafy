@@ -140,10 +140,12 @@
     display: inline-flex;
     align-items: center;
   }
+}
 
+@media (max-width: 576px) {
   .city-label {
     display: inline-block;
-    width: 75px;
+    width: 90px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
